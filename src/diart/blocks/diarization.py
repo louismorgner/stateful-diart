@@ -143,6 +143,12 @@ class SpeakerDiarization(base.Pipeline):
     def set_timestamp_shift(self, shift: float):
         self.timestamp_shift = shift
 
+    def get_clustering_state(self):
+        return self.clustering.get_state()
+
+    def set_clustering_state(self, state):
+        self.clustering.set_state(state)
+
     def reset(self):
         self.set_timestamp_shift(0)
         self.clustering = OnlineSpeakerClustering(

@@ -64,6 +64,18 @@ class OnlineSpeakerClustering:
             for c in range(self.max_speakers)
             if c not in self.active_centers or c in self.blocked_centers
         ]
+    
+    def get_state(self):
+        return {
+            'centers': self.centers,
+            'active_centers': self.active_centers,
+            'blocked_centers': self.blocked_centers
+        }
+
+    def set_state(self, state):
+        self.centers = state['centers']
+        self.active_centers = state['active_centers']
+        self.blocked_centers = state['blocked_centers']
 
     def get_next_center_position(self) -> Optional[int]:
         for center in range(self.max_speakers):

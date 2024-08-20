@@ -156,6 +156,12 @@ class StreamingInference:
                 self._chrono.stop(do_count=False)
             self._chrono.report()
 
+    def get_clustering_state(self):
+        return self.pipeline.clustering.get_state()
+
+    def set_clustering_state(self, state):
+        self.pipeline.clustering.set_state(state)
+
     def attach_hooks(
         self, *hooks: Callable[[Tuple[Annotation, SlidingWindowFeature]], None]
     ):
